@@ -37,30 +37,30 @@ app.use(bodyParser.json());
 
 router.post("/", (req,res) => {
   var newCharacter = new Character({
-    name = req.body.name
-    classType = req.body.class
-    characterLevel = req.body.characterLevel
-    health = req.body.health
-    stamina = req.body.stamina
-    factions = req.body.factions
-    race = req.body.race
-    job = req.body.job
-    totalAC = req.body.totalAC
-    wallet = req.body.wallet
-    bank = req.body.bank
-    ship = req.body.ship
-    vit = req.body.vit
-    str = req.body.str
-    dex = req.body.dex
-    int = req.body.int
-    con = req.body.con
-    end = req.body.end
-    att = req.body.att
-    cha = req.body.cha
-    luck = req.body.luck
-    will = req.body.will
-    skills = req.body.skills
-    inventory = req.body.inventory
+    name: req.body.name,
+    classType: req.body.class,
+    characterLevel: req.body.characterLevel,
+    health: req.body.health,
+    stamina: req.body.stamina,
+    factions: req.body.factions,
+    race: req.body.race,
+    job: req.body.job,
+    totalAC: req.body.totalAC,
+    wallet: req.body.wallet,
+    bank: req.body.bank,
+    ship: req.body.ship,
+    vit: req.body.vit,
+    str: req.body.str,
+    dex: req.body.dex,
+    int: req.body.int,
+    con: req.body.con,
+    end: req.body.end,
+    att: req.body.att,
+    cha: req.body.cha,
+    luck: req.body.luck,
+    will: req.body.will,
+    skills: req.body.skills,
+    inventory: req.body.inventory
   })
 
   newCharacter.save((err, result) => {
@@ -73,7 +73,7 @@ router.post("/", (req,res) => {
 })
 
 router.get("/all", passport.authenticate('jwt', { session: false }),(req, res) => {
-  Character.find({}},function (err, characters) {
+  Character.find({},function (err, characters) {
     if (err) {
       res.send(err);
     } else {

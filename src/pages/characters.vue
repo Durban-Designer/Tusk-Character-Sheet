@@ -15,8 +15,10 @@
 import axios from 'axios'
 export default {
   name: 'Characters',
+  props: ['user'],
   data () {
     return {
+      modal: '',
       characters: [],
       activeCharacter: {
         name: '',

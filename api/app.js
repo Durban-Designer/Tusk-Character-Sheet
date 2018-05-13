@@ -12,7 +12,7 @@ var characters = require("./characters.js");
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect("mongodb://user:123@ds229878.mlab.com:29878/timecrunch", {
+mongoose.connect("mongodb://user:123@ds034807.mlab.com:34807/database_baby", {
   useMongoClient: true
 }, function (error) {
   console.log(error);
@@ -29,10 +29,7 @@ app.use(function(req, res, next) {
   next()
 })
 
-app.use("/clocks", clocks);
-app.use("/companys", companys);
-app.use("/leads", leads);
-app.use("/trips", trips);
+app.use("/characters", characters);
 app.use("/users", users);
 
 router.get("/", (req,res) => {

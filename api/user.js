@@ -15,33 +15,11 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  companyId: {
-    type: String,
-    required: true
-  },
-  lastClockType: {
-    type: String,
-    required: false,
-    default: 'out'
-  },
   admin: {
     type: Boolean,
     required: false,
     default: false
   },
-  payment: {
-    type: Boolean,
-    required: false,
-    default: false
-  },
-  stripeSource: {
-    type: String,
-    required: false
-  },
-  stripeCustomer: {
-    type: String,
-    required: true
-  }
 })
 
 UserSchema.pre('save', function(next) {
