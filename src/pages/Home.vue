@@ -33,8 +33,8 @@ button {
   text-align: center;
   grid-column-start: 2;
   grid-column-end: 10;
-  background-position: center;
-  background-image: url('../assets/metal.jpg');
+  background-position: left;
+  background-image: url('../assets/metal2.jpg');
   border: none;
   box-shadow: 0px 3px 4px black;
   color: #444;
