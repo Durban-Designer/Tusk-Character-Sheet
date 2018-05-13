@@ -22,6 +22,8 @@ export default {
   background-repeat: repeat;
   position: fixed;
   top: 0;
+  box-shadow: 0px 3px 4px black;
+  z-index: 10;
 }
   h1 {
     color: #fff;
