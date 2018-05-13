@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="main">
     <div v-if="modal==='character'">
       <button v-on:click="clearCharacter; modal=''">Back</button>
     </div>
-    <div v-else>
+    <div class="listView" v-else>
       <h1>Characters</h1>
       <h2 v-for="character in characters" v-on:click="viewCharacter(character)" v-bind:key="character.id">{{character.name}}</h2>
-      <button v-on:click="makeCharacter">Make a New Character</button>
+      <button class="new" v-on:click="makeCharacter">Make a New Character</button>
     </div>
   </div>
 </template>
@@ -121,4 +121,38 @@ export default {
 </script>
 
 <style scoped lang="less">
+.main {
+  background-image: url('../assets/noise2.jpg');
+  height: 100%;
+  width: 100%;
+  background-repeat: repeat;
+  margin-top: 80px;
+  position: fixed;
+}
+.listView {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+h1 {
+  font-size: 3em;
+  text-align: center;
+  grid-column-start: 1;
+  grid-column-end: 11;
+  font-weight: lighter;
+}
+.new {
+  height: 40px;
+  width: 100%;
+  text-align: center;
+  grid-column-start: 2;
+  grid-column-end: 10;
+  background-position: left;
+  background-image: url('../assets/noise.png');
+  border: none;
+  box-shadow: 0px 3px 4px black;
+  color: white;
+  font-size: 1.7em;
+  font-weight: lighter;
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="main" v-on:click="$router.push('/')">
     <h1>Tusk Mk1</h1>
     <h2>Neverend Edition</h2>
   </div>
@@ -16,7 +16,7 @@ export default {
 
 <style scoped lang="less">
 .main {
-  height: 10%;
+  height: 12%;
   width: 100%;
   background-image: url('../../assets/noise.png');
   background-repeat: repeat;
@@ -27,13 +27,15 @@ export default {
 }
   h1 {
     color: #fff;
-    font-size: 1.5em;
+    font-size: 1.7em;
     text-align: center;
+    font-weight: lighter;
   }
   h2 {
     color: #fff;
-    font-size: 1em;
+    font-size: 1.3em;
     text-align: center;
     line-height: 0px;
+    font-weight: lighter;
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <h3>Welcome back {{user}}</h3>
+    <h3>Welcome Back {{user}}</h3>
     <button v-on:click="$router.push('/characters')">Characters</button>
   </div>
 </template>
@@ -25,19 +25,23 @@ export default {
   position: fixed;
 }
 h3 {
+  font-size: 2.5em;
   text-align: center;
   grid-column-start: 1;
   grid-column-end: 11;
+  font-weight: lighter;
 }
 button {
+  height: 40px;
   text-align: center;
   grid-column-start: 2;
   grid-column-end: 10;
-  background-position: center;
-  background-image: url('../assets/metal.jpg');
+  background-position: left;
+  background-image: url('../assets/noise.png');
   border: none;
   box-shadow: 0px 3px 4px black;
-  color: #444;
+  color: white;
   font-size: 1.7em;
+  font-weight: lighter;
 }
 </style>
