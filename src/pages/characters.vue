@@ -12,44 +12,47 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'Characters',
   data () {
-    characters: [],
-    activeCharacter: {
-      name: '',
-      classType: '',
-      characterLevel: '',
-      health: '',
-      stamina: '',
-      factions: '',
-      race: '',
-      job: '',
-      totalAC: '',
-      wallet: '',
-      bank: '',
-      ship: '',
-      vit: '',
-      str: '',
-      dex: '',
-      int: '',
-      con: '',
-      end: '',
-      att: '',
-      cha: '',
-      luck: '',
-      will: '',
-      skills: '',
-      inventory : ''
+    return {
+      characters: [],
+      activeCharacter: {
+        name: '',
+        classType: '',
+        characterLevel: '',
+        health: '',
+        stamina: '',
+        factions: '',
+        race: '',
+        job: '',
+        totalAC: '',
+        wallet: '',
+        bank: '',
+        ship: '',
+        vit: '',
+        str: '',
+        dex: '',
+        int: '',
+        con: '',
+        end: '',
+        att: '',
+        cha: '',
+        luck: '',
+        will: '',
+        skills: '',
+        inventory: ''
+      }
     }
   },
   created () {
     let vue = this
     axios.get('http://localhost:81/characters/all', {headers: { 'Authorization': 'JWT ' + vue.user.token }})
-      .then(function (response) => {
+      .then(response => {
         vue.characters = response.data
       })
-      .catch(function (error) => {
+      .catch(error => {
         console.log(error)
       })
   },
@@ -85,6 +88,7 @@ export default {
     makeCharacter () {
     },
     clearCharacter () {
+      let vue = this
       vue.activeCharacters.name = ''
       vue.activeCharacters.classType = ''
       vue.activeCharacters.characterLevel = ''
