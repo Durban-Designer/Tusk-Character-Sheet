@@ -51,10 +51,15 @@ export default {
 
 <style scoped lang="less">
   .regbox{
-    margin-top: 140px;
+    background-image: url('../assets/noise2.jpg');
+    height: 100%;
+    width: 100%;
+    background-repeat: repeat;
+    margin-top: 120px;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(12, 60px);
+    position: fixed;
   }
   h1 {
     grid-row: 1;
@@ -85,7 +90,13 @@ export default {
     border: 1px black solid;
   }
   button {
-    margin-top: 20px;
+    box-shadow: 0px 3px 4px black;
+    background-image: url('../assets/noise.png');
+    height: 2em;
+    line-height: 1.4em;
+    color: #fff;
+    width: 100%;
+    margin-bottom: 10px;
     grid-column-start: 2;
     grid-column-end: 10;
   }

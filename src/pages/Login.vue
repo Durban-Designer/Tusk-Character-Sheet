@@ -2,9 +2,9 @@
   <div class="main">
     <h1>Log-In</h1>
     <div class="loginBox">
-      <div class="emailTitle">email</div>
+      <div class="emailTitle">Email</div>
       <input class="email" placeholder="user@example.com" v-model="email" type="email">
-      <div class="passwordTitle">password</div>
+      <div class="passwordTitle">Password</div>
       <input class="password" placeholder="*********" v-model="password" type="password" v-on:keypress.enter="login">
       <h3 class="logged">Stay logged In?<input class="logButton" type="checkbox" v-model="stayLogged"></h3>
       <button class="login" v-on:click="login">Submit</button>
@@ -80,9 +80,10 @@ export default {
 
   .main {
     position: fixed;
-    height: 400px;
+    height: 100%;
     width: 100%;
     margin-top: 120px;
+    background-image: url('../assets/noise2.jpg');
   }
 
   h1, h2, h3{
@@ -90,10 +91,10 @@ export default {
   }
 
   h1 {
+    margin-top: 20px;
     font-size: 3.7em;
-    font-family: @font;
-    color: @red;
     text-align: center;
+    font-weight: lighter;
   }
 
   .loginBox {
@@ -103,17 +104,16 @@ export default {
   }
 
   input.email, input.password {
-    padding-left: 5px;
-    padding-top: 14px;
+    padding: 4%;
     font-size: 1.2em;
     border: none;
-    border-bottom: 1px solid @red;
     grid-column-start: 2;
     grid-column-end: 6;
+    height: 35px;
   }
 
   ::placeholder {
-    color: @grey;
+    color: #666;
     font-size: 1em;
   }
 
@@ -154,27 +154,23 @@ export default {
   }
 
   button {
-    background: @red;
+    background-image: url('../assets/noise.png');
     color: #fff;
-    border: none;
     font-size: 1em;
     border-radius: 5px;
     grid-row: 7;
     grid-column-start: 5;
     grid-column-end: 6;
-    width: 90%;
+    width: 100%;
   }
 
   .registerlink {
-    font-family: @font;
     font-size: 1.25em;
-    color: #005389;
+    color: #666;
     grid-row: 9;
     grid-column-start: 2;
     grid-column-end: 6;
     text-align: center;
-    text-decoration: underline;
-    text-decoration-color: #005389;
   }
 
   @media (min-width: 700px) {

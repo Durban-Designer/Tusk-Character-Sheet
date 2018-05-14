@@ -43,7 +43,6 @@ button {
   grid-column-end: 10;
   background-position: left;
   background-image: url('../assets/noise.png');
-  border: none;
   box-shadow: 0px 3px 4px black;
   color: white;
   font-size: 1.7em;

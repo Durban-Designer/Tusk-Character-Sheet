@@ -17,7 +17,7 @@ export default {
 
 <style scoped lang="less">
 .main {
-  height: 12%;
+  height: 120px;
   width: 100%;
   background-image: url('../../assets/noise.png');
   background-repeat: repeat;
@@ -30,13 +30,11 @@ export default {
     color: #fff;
     font-size: 1.7em;
     text-align: center;
-    font-weight: lighter;
   }
   h2 {
     color: #fff;
     font-size: 1.3em;
     text-align: center;
     line-height: 0px;
-    font-weight: lighter;
   }
 </style>

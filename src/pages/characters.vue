@@ -1,28 +1,30 @@
 <template>
   <div class="main">
     <div class="character" v-if="modal==='character'">
-      <h4>Name:</h4><span>{{activeCharacter.name}}</span>
-      <h4>Class:</h4><span>{{activeCharacter.classType}}</span>
-      <h4>Level:</h4><span>{{activeCharacter.characterLevel}}</span>
-      <h4>Health:</h4><span>{{activeCharacter.health}}</span>
-      <h4>Stamina:</h4><span>{{activeCharacter.stamina}}</span>
-      <h4>Factions:</h4><span>{{activeCharacter.factions}}</span>
-      <h4>Race:</h4><span>{{activeCharacter.race}}</span>
-      <h4>Job:</h4><span>{{activeCharacter.job}}</span>
-      <h4>Armor Class:</h4><span>{{activeCharacter.totalAC}}</span>
-      <h4>Wallet:</h4><span>{{activeCharacter.wallet}}</span>
-      <h4>Bank:</h4><span>{{activeCharacter.bank}}</span>
-      <h4>Ship:</h4><span>{{activeCharacter.ship}}</span>
-      <h4>Vitality:</h4><span>{{activeCharacter.vit}}</span>
-      <h4>Strength:</h4><span>{{activeCharacter.str}}</span>
-      <h4>Dexterity:</h4><span>{{activeCharacter.dex}}</span>
-      <h4>Intelligence:</h4><span>{{activeCharacter.int}}</span>
-      <h4>Constitution</h4><span>{{activeCharacter.con}}</span>
-      <h4>Endurance:</h4><span>{{activeCharacter.end}}</span>
-      <h4>Attenuation:</h4><span>{{activeCharacter.att}}</span>
-      <h4>Charisma:</h4><span>{{activeCharacter.cha}}</span>
-      <h4>Luck:</h4><span>{{activeCharacter.luck}}</span>
-      <h4>Willpower:</h4><span>{{activeCharacter.will}}</span>
+      <button class="edit" v-on:click="modal='edit'">Edit Character</button>
+      <button class="back" v-on:click="clearCharacter(); populateCharacters(); modal=''">Back</button>
+      <div class="name">Name: <span>{{activeCharacter.name}}</span></div>
+      <div class="classType">Class: <span>{{activeCharacter.classType}}</span></div>
+      <div class="level">Level: <span>{{activeCharacter.characterLevel}}</span></div>
+      <div class="hp">Health: <span>{{activeCharacter.health}}</span></div>
+      <div class="stamina">Stamina: <span>{{activeCharacter.stamina}}</span></div>
+      <div class="faction">Factions: <span>{{activeCharacter.factions}}</span></div>
+      <div class="race">Race:<span>{{activeCharacter.race}}</span></div>
+      <div class="job">Job:<span>{{activeCharacter.job}}</span></div>
+      <div class="AC">Armor Class:<span>{{activeCharacter.totalAC}}</span></div>
+      <div class="wallet">Wallet:<span>{{activeCharacter.wallet}}</span></div>
+      <div class="bank">Bank:<span>{{activeCharacter.bank}}</span></div>
+      <div class="ship">Ship:<span>{{activeCharacter.ship}}</span></div>
+      <div class="vit">Vitality: <span>{{activeCharacter.vit}}</span></div>
+      <div class="str">Strength: <span>{{activeCharacter.str}}</span></div>
+      <div class="dex">Dexterity: <span>{{activeCharacter.dex}}</span></div>
+      <div class="int">Intelligence: <span>{{activeCharacter.int}}</span></div>
+      <div class="con">Constitution: <span>{{activeCharacter.con}}</span></div>
+      <div class="end">Endurance: <span>{{activeCharacter.end}}</span></div>
+      <div class="att">Attenuation: <span>{{activeCharacter.att}}</span></div>
+      <div class="cha">Charisma: <span>{{activeCharacter.cha}}</span></div>
+      <div class="lck">Luck: <span>{{activeCharacter.luck}}</span></div>
+      <div class="will">Willpower: <span>{{activeCharacter.will}}</span></div>
       <h3 class="skillsHeader">Skills:</h3>
       <div class="skills">
         <div class="skill" v-for="skill in activeCharacter.skills" v-bind:key="skill.id">
@@ -45,33 +47,30 @@
           </div>
         </div>
       </div>
-      <button class="edit" v-on:click="modal='edit'">Edit Character</button>
-      <button class="back" v-on:click="clearCharacter(); populateCharacters(); modal=''">Back</button>
     </div>
     <div class="editModal" v-else-if="modal==='edit'">
-      <h4>Name:</h4><input class="" v-model="activeCharacter.name" placeholder="name"/>
-      <h4>Class:</h4><input class="" v-model="activeCharacter.classType" placeholder="class type" />
-      <h4>Level:</h4><input class="" v-model="activeCharacter.characterLevel" placeholder="characer level" type="number" />
-      <h4>Health:</h4><input class="" v-model="activeCharacter.health" placeholder="health" type="number" />
-      <h4>Stamina:</h4><input class="" v-model="activeCharacter.stamina" placeholder="stamina" type="number" />
-      <h4>Factions:</h4><input class="" v-model="activeCharacter.factions" placeholder="factions" />
-      <h4>Race:</h4><input class="" v-model="activeCharacter.race" placeholder="race" />
-      <h4>Job:</h4><input class="" v-model="activeCharacter.job" placeholder="job" />
-      <h4>Armor Class:</h4><input class="" v-model="activeCharacter.totalAC" placeholder="total armor class" type="number" />
-      <h4>Wallet:</h4><input class="" v-model="activeCharacter.wallet" placeholder="personal wallet" type="number" />
-      <h4>Bank:</h4><input class="" v-model="activeCharacter.bank" placeholder="bank" type="number" />
-      <h4>Ship:</h4><input class="" v-model="activeCharacter.ship" placeholder="ship charge" type="number" />
-      <h4>Vitality:</h4><input class="" v-model="activeCharacter.vit" placeholder="vitality" type="number" />
-      <h4>Strength:</h4><input class="" v-model="activeCharacter.str" placeholder="strength" type="number" />
-      <h4>Dexterity:</h4><input class="" v-model="activeCharacter.dex" placeholder="dexterity" type="number" />
-      <h4>Intelligence:</h4><input class="" v-model="activeCharacter.int" placeholder="intelligence" type="number" />
-      <h4>Constitution</h4><input class="" v-model="activeCharacter.con" placeholder="constitution" type="number" />
-      <h4>Endurance:</h4><input class="" v-model="activeCharacter.end" placeholder="endurance" type="number" />
-      <h4>Attenuation:</h4><input class="" v-model="activeCharacter.att" placeholder="attenuation" type="number" />
-      <h4>Charisma:</h4><input class="" v-model="activeCharacter.cha" placeholder="charisma" type="number" />
-      <h4>Luck:</h4><input class="" v-model="activeCharacter.luck" placeholder="luck" type="number" />
-      <h4>Willpower:</h4><input class="" v-model="activeCharacter.will" placeholder="willpower" type="number" />
-      <h3 class="skillsHeader">Skills:</h3>
+      <div>Name<input class="name" v-model="activeCharacter.name" placeholder="name"/></div>
+      <div>Class<input class="classType" v-model="activeCharacter.classType" placeholder="class type" /></div>
+      <div>Level<input class="level" v-model="activeCharacter.characterLevel" placeholder="characer level" type="number" /></div>
+      <div>Health<input class="hp" v-model="activeCharacter.health" placeholder="health" type="number" /></div>
+      <div>Stamina<input class="stamina" v-model="activeCharacter.stamina" placeholder="stamina" type="number" /></div>
+      <div>Faction<input class="faction" v-model="activeCharacter.factions" placeholder="factions" /></div>
+      <div>Race<input class="race" v-model="activeCharacter.race" placeholder="race" /></div>
+      <div>Occupation<input class="job" v-model="activeCharacter.job" placeholder="job" /></div>
+      <div>Armor Class<input class="AC" v-model="activeCharacter.totalAC" placeholder="total armor class" type="number" /></div>
+      <div>Wallet<input class="wallet" v-model="activeCharacter.wallet" placeholder="personal wallet" type="number" /></div>
+      <div>Bank<input class="bank" v-model="activeCharacter.bank" placeholder="bank" type="number" /></div>
+      <div>Ship<input class="ship" v-model="activeCharacter.ship" placeholder="ship charge" type="number" /></div>
+      <div>Vitality<input class="vit" v-model="activeCharacter.vit" placeholder="vitality" type="number" /></div>
+      <div>Strength<input class="str" v-model="activeCharacter.str" placeholder="strength" type="number" /></div>
+      <div>Dexterity<input class="dex" v-model="activeCharacter.dex" placeholder="dexterity" type="number" /></div>
+      <div>Intelligence<input class="int" v-model="activeCharacter.int" placeholder="intelligence" type="number" /></div>
+      <div>Constitution<input class="con" v-model="activeCharacter.con" placeholder="constitution" type="number" /></div>
+      <div>Endurance<input class="end" v-model="activeCharacter.end" placeholder="endurance" type="number" /></div>
+      <div>Attenuation<input class="att" v-model="activeCharacter.att" placeholder="attenuation" type="number" /></div>
+      <div>Charisma<input class="cha" v-model="activeCharacter.cha" placeholder="charisma" type="number" /></div>
+      <div>Luck<input class="lck" v-model="activeCharacter.luck" placeholder="luck" type="number" /></div>
+      <div>Willpower<input class="will" v-model="activeCharacter.will" placeholder="willpower" type="number" /></div>
       <div class="skillsEdit">
         <div class="skill" v-for="skill in activeCharacter.skills" v-bind:key="skill.id">
           <input class="skillName" v-model="skill.name" placeholder="skill name" />
@@ -79,7 +78,6 @@
           <button class="skillDelete" v-on:click="deleteSkill(skill)">Delete Skill</button>
         </div>
       </div>
-      <h3 class="itemsHeader">Items:</h3>
       <div class="itemsEdit">
         <div class="item" v-for="item in activeCharacter.inventory" v-bind:key="item.id">
           <input class="itemName" v-model="item.name" placeholder="item name" />
@@ -99,28 +97,28 @@
       <button v-on:click="modal='edit'">no</button>
     </div>
     <div class="create" v-else-if="modal==='creation'">
-      <h4>Name:</h4><input class="" v-model="activeCharacter.name" placeholder="name"/>
-      <h4>Class:</h4><input class="" v-model="activeCharacter.classType" placeholder="class type" />
-      <h4>Level:</h4><input class="" v-model="activeCharacter.characterLevel" placeholder="characer level" type="number" />
-      <h4>Health:</h4><input class="" v-model="activeCharacter.health" placeholder="health" type="number" />
-      <h4>Stamina:</h4><input class="" v-model="activeCharacter.stamina" placeholder="stamina" type="number" />
-      <h4>Factions:</h4><input class="" v-model="activeCharacter.factions" placeholder="factions" />
-      <h4>Race:</h4><input class="" v-model="activeCharacter.race" placeholder="race" />
-      <h4>Job:</h4><input class="" v-model="activeCharacter.job" placeholder="job" />
-      <h4>Armor Class:</h4><input class="" v-model="activeCharacter.totalAC" placeholder="total armor class" type="number" />
-      <h4>Wallet:</h4><input class="" v-model="activeCharacter.wallet" placeholder="personal wallet" type="number" />
-      <h4>Bank:</h4><input class="" v-model="activeCharacter.bank" placeholder="bank" type="number" />
-      <h4>Ship:</h4><input class="" v-model="activeCharacter.ship" placeholder="ship charge" type="number" />
-      <h4>Vitality:</h4><input class="" v-model="activeCharacter.vit" placeholder="vitality" type="number" />
-      <h4>Strength:</h4><input class="" v-model="activeCharacter.str" placeholder="strength" type="number" />
-      <h4>Dexterity:</h4><input class="" v-model="activeCharacter.dex" placeholder="dexterity" type="number" />
-      <h4>Intelligence:</h4><input class="" v-model="activeCharacter.int" placeholder="intelligence" type="number" />
-      <h4>Constitution</h4><input class="" v-model="activeCharacter.con" placeholder="constitution" type="number" />
-      <h4>Endurance:</h4><input class="" v-model="activeCharacter.end" placeholder="endurance" type="number" />
-      <h4>Attenuation:</h4><input class="" v-model="activeCharacter.att" placeholder="attenuation" type="number" />
-      <h4>Charisma:</h4><input class="" v-model="activeCharacter.cha" placeholder="charisma" type="number" />
-      <h4>Luck:</h4><input class="" v-model="activeCharacter.luck" placeholder="luck" type="number" />
-      <h4>Willpower:</h4><input class="" v-model="activeCharacter.will" placeholder="willpower" type="number" />
+      <div>Name<input class="name" v-model="activeCharacter.name" placeholder="name"/></div>
+      <div>Class<input class="classType" v-model="activeCharacter.classType" placeholder="class type" /></div>
+      <div>Level<input class="level" v-model="activeCharacter.characterLevel" placeholder="characer level" type="number" /></div>
+      <div>Health<input class="hp" v-model="activeCharacter.health" placeholder="health" type="number" /></div>
+      <div>Stamina<input class="stamina" v-model="activeCharacter.stamina" placeholder="stamina" type="number" /></div>
+      <div>Faction<input class="faction" v-model="activeCharacter.factions" placeholder="factions" /></div>
+      <div>Race<input class="race" v-model="activeCharacter.race" placeholder="race" /></div>
+      <div>Occupation<input class="job" v-model="activeCharacter.job" placeholder="job" /></div>
+      <div>Armor Class<input class="AC" v-model="activeCharacter.totalAC" placeholder="total armor class" type="number" /></div>
+      <div>Wallet<input class="wallet" v-model="activeCharacter.wallet" placeholder="personal wallet" type="number" /></div>
+      <div>Bank<input class="bank" v-model="activeCharacter.bank" placeholder="bank" type="number" /></div>
+      <div>Ship<input class="ship" v-model="activeCharacter.ship" placeholder="ship charge" type="number" /></div>
+      <div>Vitality<input class="vit" v-model="activeCharacter.vit" placeholder="vitality" type="number" /></div>
+      <div>Strength<input class="str" v-model="activeCharacter.str" placeholder="strength" type="number" /></div>
+      <div>Dexterity<input class="dex" v-model="activeCharacter.dex" placeholder="dexterity" type="number" /></div>
+      <div>Intelligence<input class="int" v-model="activeCharacter.int" placeholder="intelligence" type="number" /></div>
+      <div>Constitution<input class="con" v-model="activeCharacter.con" placeholder="constitution" type="number" /></div>
+      <div>Endurance<input class="end" v-model="activeCharacter.end" placeholder="endurance" type="number" /></div>
+      <div>Attenuation<input class="att" v-model="activeCharacter.att" placeholder="attenuation" type="number" /></div>
+      <div>Charisma<input class="cha" v-model="activeCharacter.cha" placeholder="charisma" type="number" /></div>
+      <div>Luck<input class="lck" v-model="activeCharacter.luck" placeholder="luck" type="number" /></div>
+      <div>Willpower<input class="will" v-model="activeCharacter.will" placeholder="willpower" type="number" /></div>
       <h3 class="skillsHeader">Skills:</h3>
       <div class="skillsEdit">
         <div class="skill" v-for="skill in activeCharacter.skills" v-bind:key="skill.id">
@@ -144,7 +142,7 @@
     </div>
     <div class="listView" v-else>
       <h1>Characters</h1>
-      <h2 v-for="character in characters" v-on:click="viewCharacter(character)" v-bind:key="character.id">{{character.name}}</h2>
+      <h2 v-for="character in characters" v-on:click="viewCharacter(character)" v-bind:key="character.id">Lv.{{character.characterLevel}} - {{character.name}}<br/>{{character.race}} - {{character.classType}}</h2>
       <button class="new" v-on:click="modal='creation'">Make a New Character</button>
     </div>
   </div>
@@ -368,58 +366,224 @@ export default {
 <style scoped lang="less">
 .main {
   background-image: url('../assets/noise2.jpg');
-  height: 300%;
+  height: 200%;
   width: 100%;
   background-repeat: repeat;
   margin-top: 80px;
   position: absolute;
 }
 .listView {
+  margin-top: 2em;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 100px);
 }
-.character {
+.create {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: 1em;
+  margin-top: 5em;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(40, 2em);
+  grid-gap: 5px;
+  grid-template-rows: repeat(30, 40px);
+}
+.editModal {
+  width: 90%;
+  height: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: 1em;
+  margin-top: 5em;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-rows: repeat(30, 1fr);
+}
+
+.character {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: 1em;
+  margin-top: 5em;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(30, 40px);
+}
+/*Character Page*/
+.name {
+  grid-column-start: 1;
+  grid-column-end: 6;
+  grid-row: 2;
+  border: 1px solid black;
+}
+.classType {
+  grid-column-start: 6;
+  grid-column-end: 11;
+  grid-row: 2;
+  border: 1px solid black;
+}
+.level {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row: 3;
+  border: 1px solid black;
+}
+.race {
+  grid-column-start: 3;
+  grid-column-end: 6;
+  grid-row: 3;
+  border: 1px solid black;
+}
+.faction {
+  grid-column-start: 1;
+  grid-column-end: 11;
+  grid-row: 4;
+  border: 1px solid black;
+}
+.hp {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row: 5;
+  border: 1px solid black;
+}
+.stamina {
+  grid-column-start: 4;
+  grid-column-end: 7;
+  grid-row: 5;
+  border: 1px solid black;
+}
+.AC {
+  grid-column-start: 7;
+  grid-column-end: 11;
+  grid-row: 5;
+  border: 1px solid black;
+}
+.job {
+  grid-column-start: 6;
+  grid-column-end: 11;
+  grid-row: 3;
+  border: 1px solid black;
+}
+.wallet {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row: 6;
+  border: 1px solid black;
+}
+.bank {
+  grid-column-start: 4;
+  grid-column-end: 7;
+  grid-row: 6;
+  border: 1px solid black;
+}
+.ship {
+  grid-column-start: 7;
+  grid-column-end: 11;
+  grid-row: 6;
+  border: 1px solid black;
+}
+.vit {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row: 8;
+  border: 1px solid black;
+}
+.str {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row: 9;
+  border: 1px solid black;
+}
+.dex {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row: 10;
+  border: 1px solid black;
+}
+.int {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row: 11;
+  border: 1px solid black;
+}
+.con {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row: 12;
+  border: 1px solid black;
+}
+.end {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row: 13;
+  border: 1px solid black;
+}
+.cha {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row: 14;
+  border: 1px solid black;
+}
+.att {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row: 17;
+  border: 1px solid black;
+}
+.lck {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row: 15;
+  border: 1px solid black;
+}
+.will {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row: 16;
+  border: 1px solid black;
 }
 h1 {
   font-size: 3em;
   text-align: center;
   grid-column-start: 1;
   grid-column-end: 11;
+  margin-bottom: 60px;
   font-weight: lighter;
 }
 .skills {
-  grid-row-start: 24;
-  grid-row-end: 31;
+  grid-row-start: 20;
+  grid-row-end: 25;
   grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-end: 11;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(20, 1em);
+  border: 1px solid black;
+  text-decoration: underline;
+  padding-left: 5%;
+  line-height: 30px;
 }
 .items {
-  grid-row-start: 33;
-  grid-row-end: 40;
+  text-decoration: underline;
+  padding-left: 5%;
+  grid-row-start: 28;
+  grid-row-end: 34;
   grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-end: 11;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(20, 1em);
+  border: 1px solid black;
 }
 .skillsHeader {
   text-align: center;
-  grid-row-start: 23;
-  grid-row-end: 24;
+  grid-row-start: 18;
   grid-column-start: 1;
   grid-column-end: 3;
 }
 .itemsHeader {
   text-align: center;
-  grid-row-start: 32;
-  grid-row-end: 33;
+  grid-row-start: 26;
   grid-column-start: 1;
   grid-column-end: 3;
 }
@@ -431,21 +595,26 @@ h1 {
   width: 100%;
 }
 .edit {
-  position: absolute;
-  bottom: 40px;
-  height: 1.5em;
+  color: #fff;
+  box-shadow: 0px 3px 4px black;
+  background-image: url('../assets/noise.png');
+  grid-row: 1;
+  grid-column-start: 1;
+  grid-column-end: 5;
+  height: 2em;
   line-height: 1.4em;
   width: 100%;
 }
 .back {
-  position: absolute;
-  bottom: 10px;
-  height: 1.5em;
+  box-shadow: 0px 3px 4px black;
+  background-image: url('../assets/noise.png');
+  height: 2em;
   line-height: 1.4em;
   width: 100%;
+  color: #fff;
 }
 .new {
-  height: 40px;
+  height: 60px;
   width: 100%;
   text-align: center;
   position: fixed;
@@ -458,5 +627,22 @@ h1 {
   color: white;
   font-size: 1.7em;
   font-weight: lighter;
+}
+h2 {
+  color: white;
+  grid-column-start: 2;
+  grid-column-end: 10;
+  background-image: url('../assets/noise.png');
+  line-height: 28px;
+  padding-left: 5%;
+  font-size: 1.3em;
+  height: 60px;
+}
+button {
+  box-shadow: 0px 3px 4px black;
+  background-image: url('../assets/noise.png');
+  height: 2em;
+  line-height: 1.4em;
+  color: #fff;
 }
 </style>
