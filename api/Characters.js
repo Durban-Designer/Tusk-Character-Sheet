@@ -38,7 +38,7 @@ app.use(bodyParser.json());
 router.post("/", (req,res) => {
   var newCharacter = new Character({
     name: req.body.name,
-    classType: req.body.class,
+    classType: req.body.classType,
     characterLevel: req.body.characterLevel,
     health: req.body.health,
     stamina: req.body.stamina,
@@ -87,8 +87,10 @@ router.put("/:id", passport.authenticate('jwt', { session: false }), (req, res) 
   Character.find({"_id": characterid},function (err, character) {
     if (err) {
         res.status(500).send(err);
+    } else if (character.length === 0) {
+        res.status(404).send('error character not found')
     } else {
-        var customer = customer[0];
+        var character = character[0];
         character.name = req.body.name || character.name;
         character.classType = req.body.classType || character.classType;
         character.characterLevel = req.body.characterLevel || character.characterLevel;

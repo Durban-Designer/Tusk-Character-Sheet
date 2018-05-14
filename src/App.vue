@@ -1,9 +1,9 @@
 <template>
   <div id="q-app">
     <div class="main">
-    <navbar v-on:logout="logOut" :logged="loggedIn" :user="user"></navbar>
+    <navbar  :logged="loggedIn" :user="user"></navbar>
     <transition name="fade">
-      <router-view v-on:login="login" v-on:register="register" :logged="loggedIn" :user="user"/>
+      <router-view v-on:login="login" v-on:logout="logOut" v-on:register="register" :logged="loggedIn" :user="user"/>
     </transition>
   </div>
 </div>
@@ -20,6 +20,7 @@ export default {
     let vue = this
     vue.user.token = localStorage.getItem('Tusktoken')
     vue.user.id = localStorage.getItem('TuskuserId')
+    vue.user.name = localStorage.getItem('Tuskname')
     vue.user.admin = localStorage.getItem('Tuskadmin')
     if (vue.user.token !== null) {
       vue.loggedIn = true
@@ -31,6 +32,7 @@ export default {
       user: {
         id: '',
         token: '',
+        name: '',
         admin: false
       }
     }
@@ -42,7 +44,7 @@ export default {
       vue.user.id = user.id
       vue.user.admin = user.admin
       vue.loggedIn = true
-      vue.$router.push('/account')
+      vue.$router.push('/characters')
     },
     logOut: function () {
       let vue = this
@@ -51,6 +53,7 @@ export default {
       vue.loggedIn = false
       localStorage.removeItem('Tusktoken')
       localStorage.removeItem('TuskuserId')
+      localStorage.removeItem('Tuskname')
       localStorage.removeItem('Tuskadmin')
       vue.$router.push('/')
     },
@@ -59,8 +62,9 @@ export default {
       console.log(user)
       vue.user.token = user.token
       vue.user.id = user.id
+      vue.user.name = user.name
       vue.user.admin = user.admin
-      vue.$router.push('/account')
+      vue.$router.push('/characters')
     }
   }
 }

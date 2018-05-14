@@ -1,14 +1,19 @@
 <template>
   <div class="main">
-    <h3>Welcome Back {{user}}</h3>
-    <button v-on:click="$router.push('/characters')">Characters</button>
+    <h3 v-if="logged">Welcome Back {{user.name}}</h3>
+    <h3 v-if="!logged">Welcome!</h3>
+    <button v-on:click="$router.push('/characters')" v-if="logged">Characters</button>
+    <button class="login" v-on:click="$router.push('/login')" v-if="!logged">Login</button>
+    <button class="account" v-on:click="$router.push('/account')" v-if="logged">Account</button>
+    <button class="register" v-on:click="$router.push('/register')" v-if="!logged">Register</button>
+    <button class="logOut" v-on:click="$emit('logout')" v-if="logged">Log Out</button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Index',
-  props: ['user']
+  props: ['user', 'logged']
 }
 </script>
 
