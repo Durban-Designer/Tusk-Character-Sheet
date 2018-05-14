@@ -196,7 +196,7 @@ export default {
     populateCharacters () {
       let vue = this
       vue.characters = []
-      axios.get('http://localhost:81/characters/all', {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+      axios.get('https://api.tuskgaming.com/characters/all', {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(response => {
           vue.characters = response.data
         })
@@ -235,7 +235,7 @@ export default {
     },
     makeCharacter () {
       let vue = this
-      axios.post('http://localhost:81/characters', {
+      axios.post('https://api.tuskgaming.com/characters', {
         name: vue.activeCharacter.name,
         classType: vue.activeCharacter.classType,
         characterLevel: vue.activeCharacter.characterLevel,
@@ -270,7 +270,7 @@ export default {
     },
     updateCharacter () {
       let vue = this
-      axios.put('http://localhost:81/characters/' + vue.activeCharacter.id, {
+      axios.put('https://api.tuskgaming.com/characters/' + vue.activeCharacter.id, {
         name: vue.activeCharacter.name,
         classType: vue.activeCharacter.classType,
         characterLevel: vue.activeCharacter.characterLevel,
@@ -332,7 +332,7 @@ export default {
     },
     deleteCharacter () {
       let vue = this
-      axios.delete('http://localhost:81/characters/' + vue.activeCharacter.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+      axios.delete('https://api.tuskgaming.com/characters/' + vue.activeCharacter.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(result => {
           vue.clearCharacter()
           vue.populateCharacters()

@@ -40,7 +40,7 @@ export default {
   methods: {
     login () {
       let vue = this
-      axios.post('http://localhost:81/users/login', {
+      axios.post('https://api.tuskgaming.com/users/login', {
         email: vue.email.toLowerCase(),
         password: vue.password
       })

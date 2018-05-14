@@ -33,7 +33,7 @@ export default {
   methods: {
     register () {
       let vue = this
-      axios.post('http://localhost:81/users', {
+      axios.post('https://api.tuskgaming.com/users', {
         name: vue.name,
         email: vue.email,
         password: vue.password

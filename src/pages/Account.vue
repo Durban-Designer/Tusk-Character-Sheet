@@ -59,7 +59,7 @@ export default {
   methods: {
     updateUser () {
       let vue = this
-      axios.put('http://localhost:81/users/' + vue.user.id, {
+      axios.put('https://api.tuskgaming.com/users/' + vue.user.id, {
         email: vue.activeUser.email,
         name: vue.activeUser.name
       }, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
@@ -74,7 +74,7 @@ export default {
     },
     updatePass () {
       let vue = this
-      axios.put('http://localhost:81/users/' + vue.user.id, {
+      axios.put('https://api.tuskgaming.com/users/' + vue.user.id, {
         password: vue.activeUser.password
       }, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function (user) {
@@ -91,7 +91,7 @@ export default {
     },
     populateActiveUser () {
       let vue = this
-      axios.get('http://localhost:81/users/' + vue.user.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
+      axios.get('https://api.tuskgaming.com/users/' + vue.user.id, {headers: { 'Authorization': 'JWT ' + vue.user.token }})
         .then(function (response) {
           vue.activeUser.email = response.data.email
           vue.activeUser.name = response.data.name
@@ -102,7 +102,7 @@ export default {
     },
     registerUser () {
       let vue = this
-      axios.post('http://localhost:81/users', {
+      axios.post('https://api.tuskgaming.com/users', {
         email: vue.activeUser.email,
         password: vue.activeUser.password,
         name: vue.activeUser.name
