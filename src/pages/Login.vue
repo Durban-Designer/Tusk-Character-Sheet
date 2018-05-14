@@ -49,13 +49,13 @@ export default {
             vue.user.id = response.data.userId
             vue.user.admin = response.data.admin
             if (vue.stayLogged === true) {
-              localStorage.setItem('token', response.data.token)
-              localStorage.setItem('userId', response.data.userId)
-              localStorage.setItem('admin', response.data.admin)
+              localStorage.setItem('Tusktoken', response.data.token)
+              localStorage.setItem('TuskuserId', response.data.userId)
+              localStorage.setItem('Tuskadmin', response.data.admin)
             } else {
-              localStorage.removeItem('token')
-              localStorage.removeItem('userId')
-              localStorage.removeItem('admin')
+              localStorage.removeItem('Tusktoken')
+              localStorage.removeItem('TuskuserId')
+              localStorage.removeItem('Tuskadmin')
             }
             vue.$emit('login', vue.user)
           }

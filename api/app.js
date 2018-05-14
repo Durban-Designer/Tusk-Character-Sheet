@@ -29,8 +29,8 @@ app.use(function(req, res, next) {
   next()
 })
 
-app.use("/characters", characters);
 app.use("/users", users);
+app.use("/characters", characters);
 
 router.get("/", (req,res) => {
   res.sendFile(path + "index.html");

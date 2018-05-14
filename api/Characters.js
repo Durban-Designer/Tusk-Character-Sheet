@@ -9,22 +9,22 @@ var app = express();
 var router = express.Router();
 var mongoose = require("mongoose");
 var Character = mongoose.model("Character");
+var User = mongoose.model("User");
 var bcrypt = require('bcryptjs');
 var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;
-var fs = require('fs');
 
 var jwtOptions = {}
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("JWT");
 jwtOptions.secretOrKey = 'LokisBreath-420';
 
 var strategy = new JwtStrategy(jwtOptions, function(jwt_payload, next) {
-  Character.findOne({"_id": jwt_payload.id}, function(err, character) {
+  User.findOne({"_id": jwt_payload.id}, function(err, user) {
     if (err) {
           return next(err, false);
       }
-      if (character) {
-          return next(null, character);
+      if (user) {
+          return next(null, user);
       } else {
           return next(null, false);
       }
@@ -91,28 +91,28 @@ router.put("/:id", passport.authenticate('jwt', { session: false }), (req, res) 
         var customer = customer[0];
         character.name = req.body.name || character.name;
         character.classType = req.body.classType || character.classType;
-        character.characterLevel = req.body.characterLevel || character.characterLevel
-        character.health = req.body.health || character.health
-        character.stamina = req.body.stamina || character.stamina
-        character.factions = req.body.factions || character.factions
-        character.race = req.body.race || character.race
-        character.job = req.body.job || character.job
-        character.totalAC = req.body.totalAC || character.totalAC
-        character.wallet = req.body.wallet || character.wallet
-        character.bank = req.body.bank || character.bank
-        character.ship = req.body.ship || character.ship
-        character.vit = req.body.vit || character.vit
-        character.str = req.body.str || character.str
-        character.dex = req.body.dex || character.dex
-        character.int = req.body.int || character.int
-        character.con = req.body.con || character.con
-        character.end = req.body.end || character.end
-        character.att = req.body.att || character.att
-        character.cha = req.body.cha || character.cha
-        character.luck = req.body.luck || character.luck
-        character.will = req.body.will || character.will
-        character.skills = req.body.skills || character.skills
-        character.inventory = req.body.inventory || character.inventory
+        character.characterLevel = req.body.characterLevel || character.characterLevel;
+        character.health = req.body.health || character.health;
+        character.stamina = req.body.stamina || character.stamina;
+        character.factions = req.body.factions || character.factions;
+        character.race = req.body.race || character.race;
+        character.job = req.body.job || character.job;
+        character.totalAC = req.body.totalAC || character.totalAC;
+        character.wallet = req.body.wallet || character.wallet;
+        character.bank = req.body.bank || character.bank;
+        character.ship = req.body.ship || character.ship;
+        character.vit = req.body.vit || character.vit;
+        character.str = req.body.str || character.str;
+        character.dex = req.body.dex || character.dex;
+        character.int = req.body.int || character.int;
+        character.con = req.body.con || character.con;
+        character.end = req.body.end || character.end;
+        character.att = req.body.att || character.att;
+        character.cha = req.body.cha || character.cha;
+        character.luck = req.body.luck || character.luck;
+        character.will = req.body.will || character.will;
+        character.skills = req.body.skills || character.skills;
+        character.inventory = req.body.inventory || character.inventory;
 
         character.save(function (err, character) {
             if (err) {

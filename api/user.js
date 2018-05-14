@@ -19,7 +19,7 @@ var UserSchema = new mongoose.Schema({
     type: Boolean,
     required: false,
     default: false
-  },
+  }
 })
 
 UserSchema.pre('save', function(next) {

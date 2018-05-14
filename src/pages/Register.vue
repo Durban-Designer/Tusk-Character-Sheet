@@ -39,7 +39,7 @@ export default {
         password: vue.password
       })
         .then(response => {
-          vue.$emit('register', response)
+          vue.$emit('register', response.data)
         })
         .catch(response => {
           console.log(response)
